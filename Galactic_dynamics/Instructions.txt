@@ -1,0 +1,14 @@
+Instructions:
+
+1. The Schwarzschild.py file is run with the potential conditions mentioned in SCM3.ini file.
+This gives us the initial conditions after solving for the potentials.
+2. Obtained model_component_disk.orb, model_component_bulge.orb files which contain initial condition infromation.
+3. Merged both files inside model_component_disk.orb file.
+4. This .orb file is divided into 10 equal files using disk_split.py. (output orb_split1.txt and similarly named files). This gives us the advantage of parallel computing
+5. 1ct.py file calculates the fraction of time spent in a cell for the trajectories of orb_split1.txt file 
+Similarly 2ct,3ct files are created changing the fnum variable inside to calculate fraction of time spent by the trajectories mentioned in other orb_split file. (output cell_frac_time_1.txt and similarly named files)
+6. Similar to 5th step , 1lyap.py file was used to calculate entopy of each trajectoris. Here also 10 lyap.py files were created to operate on 10 orb_split files. (output entropy_list_maximal1.txt and similarly named files)
+7. 1E.py file is used to calculate entropy in each cell. 1E file calcultaed entropy for first hundread cells. Similarly 2E.py,3E.py and 4E.py file was used to calculate entropy for rest of the cells. (Output Cell_wise_entropy_1.txt and similarly named files)
+8.  All_cell.py file merges all the cell entropies into one All_cell_entropy.txt file.
+This also creates the entropy_mesh.txt which contains the entropy mesh in r and theta coordinate.
+9. entropy_plotter.py file plots the radial distribution of the entropy
